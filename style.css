@@ -1,0 +1,100 @@
+body {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  background: pink;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+h1 {
+  color: white;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  z-index: 10;
+}
+
+button {
+  padding: 14px 28px;
+  font-size: 18px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  margin: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  z-index: 10;
+  position: relative;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+#startBtn {
+  background-color: #ff4d6d;
+  color: white;
+}
+
+#iyaBtn {
+  background-color: #ff85a2;
+  color: white;
+}
+
+#nauwwBtn {
+  background-color: #888;
+  color: white;
+  position: absolute;
+}
+
+#question {
+  display: none;
+  margin-top: 20px;
+  text-align: center;
+  z-index: 10;
+}
+
+#question h2 {
+  color: white;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+  margin-bottom: 20px;
+}
+
+/* Pesan manis */
+#loveMessage {
+  display: none;
+  font-size: 1.8em;
+  color: white;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+  animation: fadeIn 2s ease forwards;
+  margin-top: 30px;
+  z-index: 10;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Hati jatuh */
+.heart {
+  position: fixed;
+  top: -10px;
+  font-size: 20px;
+  color: red;
+  animation: fall linear forwards;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}

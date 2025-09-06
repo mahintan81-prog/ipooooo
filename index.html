@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cinta Romantis 💖</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>💖 Website Cinta Lucu 💖</h1>
+  <button id="startBtn">Klik untuk lihat</button>
+
+  <div id="question">
+    <h2>Maukah Jadi Pacarku? 💕</h2>
+    <button id="iyaBtn">Iyaaaa 😍</button>
+    <button id="nauwwBtn">Nauww 🙈</button>
+  </div>
+
+  <!-- Pesan manis -->
+  <div id="loveMessage">💞 Yeayyy! Aku juga sayang banget sama kamu 💞</div>
+
+  <!-- Musik romantis -->
+  <audio id="bgMusic" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+<script>
+    const startBtn = document.getElementById("startBtn");
+const question = document.getElementById("question");
+const iyaBtn = document.getElementById("iyaBtn");
+const nauwwBtn = document.getElementById("nauwwBtn");
+const bgMusic = document.getElementById("bgMusic");
+const loveMessage = document.getElementById("loveMessage");
+
+// Tampilkan pertanyaan & mulai musik
+startBtn.addEventListener("click", () => {
+  startBtn.style.display = "none";
+  question.style.display = "block";
+  nauwwBtn.style.left = "60%";
+  nauwwBtn.style.top = "60%";
+
+  bgMusic.play().catch(err => {
+    console.log("Autoplay diblokir, user harus klik dulu:", err);
+  });
+});
+
+// Jika pilih "Iyaaaa"
+iyaBtn.addEventListener("click", () => {
+  question.style.display = "none";
+  loveMessage.style.display = "block";
+});
+
+// Tombol "Nauww" kabur
+nauwwBtn.addEventListener("mouseover", () => {
+  const iyaRect = iyaBtn.getBoundingClientRect();
+  const padding = 120; // jarak aman agar gak nutup tombol "Iyaaaa"
+
+  let x, y;
+  do {
+    x = Math.floor(Math.random() * (window.innerWidth - 100));
+    y = Math.floor(Math.random() * (window.innerHeight - 100));
+  } while (
+    x > iyaRect.left - padding &&
+    x < iyaRect.right + padding &&
+    y > iyaRect.top - padding &&
+    y < iyaRect.bottom + padding
+  );
+
+  nauwwBtn.style.left = x + "px";
+  nauwwBtn.style.top = y + "px";
+});
+
+// Efek hati jatuh
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = Math.random() * 20 + 15 + "px";
+  heart.style.animationDuration = Math.random() * 3 + 3 + "s"; 
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 6000);
+}
+
+setInterval(createHeart, 500);
+
+</script>
+</html>
